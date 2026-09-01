@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-icon">✓</div>
+          <div>
+            <p class="eyebrow">Productivity Dashboard</p>
+            <h1>Smart To-Do List</h1>
+          </div>
+        </div>
+        <button id="clear-all-btn" class="btn btn-danger" type="button">Clear All</button>
+      </header>
+
+      <main class="app-layout">
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <h2 id="form-title">Add New Task</h2>
+          </div>
+
+          <form id="todo-form">
+            <div class="field-group">
+              <label for="task-title">Task Title</label>
+              <input
+                id="task-title"
+                name="title"
+                type="text"
+                placeholder="Enter task title"
+                maxlength="120"
+                required
+              />
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" name="priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="task-due-date">Due Date</label>
+                <input id="task-due-date" name="dueDate" type="date" required />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="submit-btn" class="btn btn-primary" type="submit">Add Task</button>
+              <button id="cancel-edit-btn" class="btn btn-secondary hidden" type="button">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel stats-panel">
+          <div class="section-heading">
+            <h2>Task Overview</h2>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Total</span>
+              <strong id="total-count">0</strong>
+            </div>
+            <div class="stat-card pending-card">
+              <span class="stat-label">Pending</span>
+              <strong id="pending-count">0</strong>
+            </div>
+            <div class="stat-card completed-card">
+              <span class="stat-label">Completed</span>
+              <strong id="completed-count">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel list-panel">
+          <div class="toolbar">
+            <div class="filter-group" aria-label="Filter tasks">
+              <button class="filter-btn active" type="button" data-filter="all">All</button>
+              <button class="filter-btn" type="button" data-filter="pending">Pending</button>
+              <button class="filter-btn" type="button" data-filter="completed">Completed</button>
+            </div>
+
+            <label class="search-wrap" aria-label="Search tasks">
+              <span>Search</span>
+              <input id="search-input" type="search" placeholder="Search by task name" />
+            </label>
+          </div>
+
+          <div id="task-list" class="task-list" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state hidden">
+            <div class="empty-icon">📌</div>
+            <h3>No tasks found</h3>
+            <p>Start by adding a new task to your list.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
